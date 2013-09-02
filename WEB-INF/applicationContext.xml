@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/databasename">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mappingResources">
+			<list>
+				<value>net\ssday\entity\Article.hbm.xml </value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQL5Dialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate"
+		class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="mySqlDao" class="net.ssday.dao.MySqlDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="indexService" class="net.ssday.service.IndexServiceImpl">
+		<property name="mySqlDao" ref="mySqlDao"></property>
+	</bean>
+
+	<bean id="indexAction" class="net.ssday.action.IndexAction">
+		<property name="indexService" ref="indexService"></property>
+	</bean>
+	
+	<bean id="writeAction" class="net.ssday.action.WriteAction">
+		<property name="mySqlDao" ref="mySqlDao"></property>
+	</bean>
+	
+	<bean id="readAction" class="net.ssday.action.ReadAction">
+		<property name="mySqlDao" ref="mySqlDao"></property>
+	</bean>
+	
+	<bean id="grabWordAction" class="net.ssday.action.GrabWordAction">
+		<property name="mySqlDao" ref="mySqlDao"></property>
+	</bean>
+
+</beans>

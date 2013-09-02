@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+body {
+	border-top: 1px;
+	border-top-style: solid;
+	border-top-color: rgb(188,188,188);
+	margin: 5% auto;
+	padding: 1px;
+	width: 60%;
+	background-color: rgb(226,226,226);
+}
+header {
+	border: 1px;
+	border-color: white;
+	border-style: solid;
+	border-bottom-color: rgb(190,190,190);
+	clear: both;
+	background-color: white;
+}
+header hgroup h1 {
+	margin: 5% 0 0 10%;
+}
+header hgroup h4 {
+	color: gray;
+	text-indent: 1mm;
+	margin: 0 0 4% 10%;
+}
+header figure {
+	width: 99.6%;
+	margin: auto;
+}
+header figure figcaption {
+}
+header figure img{
+	width: 100%;
+	display: block;
+}
+header nav {
+	border-bottom: 1px;
+	border-color: rgb(190,190,190);
+	border-bottom-style: solid;
+	background-color: black;
+}
+header nav ul {
+	list-style: none;
+	display: inline-block;
+}
+header nav ul li{
+	display: inline-block;
+}
+header nav ul li a{
+	color: white;
+	text-decoration: none;
+}
+header nav ul li a:HOVER{
+	color: olive;
+	text-decoration: underline;
+}
+section {
+	border: 1px;
+	border-style: solid;
+	border-color: rgb(188,188,188);
+	height: auto;
+	background: white;
+	padding-left: 1mm;
+	padding-right: 34%;
+}
+section nav {
+	padding-left: 5%;
+}
+article h1 {
+	font-size: medium;
+	display: inline;
+}
+article h1 a {
+	color: teal;
+	text-decoration: none;
+}
+article h1 a:HOVER {
+	text-decoration: underline;
+}
+article small {
+	display: inline;
+}
+article .show{
+	display: block;
+}
+article .hidden{
+	display: none;
+}
+article p{
+	text-indent: 2em;
+	margin: 10px auto;
+}
+aside {
+	width: 34%;
+	float: right;
+}
+footer {
+	border: 1px;
+	border-style: solid;
+	border-color: rgb(188,188,188);
+	clear: both;
+	width: 99.7%;
+	background: white;
+}
